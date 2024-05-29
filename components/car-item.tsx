@@ -1,14 +1,18 @@
-import { CarWithDeps } from '@/utils/db';
-import Link from 'next/link';
+import { CarWithDeps } from "@/utils/db";
+import Link from "next/link";
 
-export default function CarItem({ car }: { car: CarWithDeps}) {
-    return (
-        <div className="flex items-center justify-center p-4 space-x-6">
-            <h2 className="text-2xl font-bold">{car.model.make.name}</h2>
-            <h3 className='text-xl font-bold'>{car.model.name}</h3>
-            <p className="text-lg">{car.year}</p>
-            <p className="text-lg">{car.price}</p>
-            <Link href={`/car/${car.id}`}>See details</Link>
+export default function CarItem({ car }: { car: CarWithDeps }) {
+  return (
+    <div className="flex flex-col p-2">
+      <Link className="font-light" href={`/car/${car.id}`}>
+        <div className="flex items-end">
+          <h2 className="text-2xl font-bold">
+            {car.model.make.name} {car.model.name}
+          </h2>
+          <p className="text-lg pl-2">r. v. {car.year}</p>
         </div>
-    );
+        <p className="text-lg">{car.price.toLocaleString("cs")} Kč</p>
+      </Link>
+    </div>
+  );
 }

@@ -3,14 +3,32 @@ import SearchForm from "@/components/search-form";
 import CarList from "@/components/car-list";
 import Link from "next/link";
 
-const getCars = async () => {
-  return await prisma.car.findMany({
-    include: { model: { include: { make: true } } },
-  });
+const getCars = async (search: string | null) => {
+  return search
+    ? await prisma.car.findMany({
+        include: { model: { include: { make: true } } },
+        where: {
+          OR: [
+            { description: { contains: search } },
+            { model: { name: { contains: search } } },
+            { model: { make: { name: { contains: search } } } },
+          ],
+        },
+      })
+    : await prisma.car.findMany({
+        include: { model: { include: { make: true } } },
+      });
 };
 
-export default async function Home() {
-  const cars = await getCars();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const search = searchParams?.search ? (searchParams.search as string) : null;
+  const cars = await getCars(search);
+
+  console.log(searchParams);
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">

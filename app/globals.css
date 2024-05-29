@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -44,4 +30,25 @@ body {
 
 .title {
   @apply text-4xl font-bold pb-6;
+}
+
+.divider {
+  @apply h-px border-gray-300;
+}
+
+.subtitle {
+  @apply text-xl font-semibold pb-4;
+}
+
+.btn-gray {
+  @apply bg-gray-400 text-white;
+}
+.btn-gray:hover {
+  @apply bg-gray-600;
+}
+
+input,
+select,
+textarea {
+  @apply border border-gray-300 rounded p-1;
 }

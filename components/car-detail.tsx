@@ -6,24 +6,31 @@ type Props = {
 
 export default function CarDetail({ car }: Props) {
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="title">Car Detail</h1>
+    <div className="flex flex-col">
+      <h2 className="subtitle">Car Details</h2>
+      <div className="grid grid-cols-3 max-w-3xl gap-x-6 gap-y-2">
+        <p className="font-light">Make</p>
+        <p className="col-span-2">{car.model.make.name}</p>
 
-      <div className="grid grid-cols-2 max-w-xl">
-        <p>Make</p>
-        <p>{car.model.make.name}</p>
+        <hr className="divider col-span-3" />
 
-        <p>Model</p>
-        <p>{car.model.name}</p>
+        <p className="font-light">Model</p>
+        <p className="col-span-2">{car.model.name}</p>
 
-        <p>Year</p>
-        <p>{car.year}</p>
+        <hr className="divider col-span-3" />
 
-        <p>Price</p>
-        <p>{car.price}</p>
+        <p className="font-light">Year</p>
+        <p className="col-span-2">{car.year}</p>
 
-        <p>Description</p>
-        <p>{car.description}</p>
+        <hr className="divider col-span-3" />
+
+        <p className="font-light">Price</p>
+        <p className="col-span-2">{car.price.toLocaleString("cs")} Kč </p>
+
+        <hr className="divider col-span-3" />
+
+        <p className="font-light">Description</p>
+        <p className="col-span-3 max-w-md">{car.description}</p>
       </div>
     </div>
   );

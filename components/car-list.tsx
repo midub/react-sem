@@ -2,14 +2,15 @@ import { CarWithDeps } from "@/utils/db";
 import CarItem from "./car-item";
 
 type Props = {
-    cars: CarWithDeps[];
-  };
+  cars: CarWithDeps[];
+};
 
 export default async function CarList({ cars }: Props) {
-    return (
-        <div className="divide-y divide-gray-300">
-            { cars.map((car) => <CarItem key={car.id} car={car}/>)}
-        </div>
-    );
-  }
-  
+  return (
+    <div className=" divide-y divide-gray-300">
+      {cars.map((car) => (
+        <CarItem key={car.id} car={car} />
+      ))}
+    </div>
+  );
+}
