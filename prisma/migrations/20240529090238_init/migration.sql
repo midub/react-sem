@@ -1,0 +1,17 @@
+-- CreateTable
+CREATE TABLE "Car" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "make" TEXT NOT NULL,
+    "model" TEXT NOT NULL,
+    "year" INTEGER NOT NULL,
+    "price" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Comment" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "carId" INTEGER NOT NULL,
+    CONSTRAINT "Comment_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
