@@ -41,3 +41,7 @@ body {
 .btn-blue:hover {
   @apply bg-blue-700;
 }
+
+.title {
+  @apply text-4xl font-bold pb-6;
+}

@@ -1,4 +1,5 @@
 import { CarWithDeps } from '@/utils/db';
+import Link from 'next/link';
 
 export default function CarItem({ car }: { car: CarWithDeps}) {
     return (
@@ -7,6 +8,7 @@ export default function CarItem({ car }: { car: CarWithDeps}) {
             <h3 className='text-xl font-bold'>{car.model.name}</h3>
             <p className="text-lg">{car.year}</p>
             <p className="text-lg">{car.price}</p>
+            <Link href={`/car/${car.id}`}>See details</Link>
         </div>
     );
 }

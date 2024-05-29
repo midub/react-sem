@@ -1,5 +1,4 @@
-import prisma, { CarWithDeps } from "@/utils/db";
-import SearchForm from "./search-form";
+import { CarWithDeps } from "@/utils/db";
 import CarItem from "./car-item";
 
 type Props = {

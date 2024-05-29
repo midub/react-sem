@@ -12,12 +12,13 @@ datasource db {
 }
 
 model Car {
-  id       Int       @id @default(autoincrement())
-  modelId  Int
-  model    Model     @relation(fields: [modelId], references: [id])
-  year     Int
-  price    Int
-  comments Comment[]
+  id          Int       @id @default(autoincrement())
+  modelId     Int
+  model       Model     @relation(fields: [modelId], references: [id])
+  year        Int
+  price       Int
+  description String    @default("")
+  comments    Comment[]
 }
 
 model Make {
