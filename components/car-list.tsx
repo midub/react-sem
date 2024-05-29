@@ -9,7 +9,7 @@ type Props = {
 export default async function CarList({ cars }: Props) {
     return (
         <div className="divide-y divide-gray-300">
-            { cars.map((car) => <CarItem car={car}/>)}
+            { cars.map((car) => <CarItem key={car.id} car={car}/>)}
         </div>
     );
   }
