@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Car, Make, Model, PrismaClient } from "@prisma/client";
 
 let prisma: PrismaClient;
 
@@ -16,3 +16,5 @@ else {
 }
 
 export default prisma;
+
+export type CarWithDeps = Car & { model: Model & { make: Make }};
