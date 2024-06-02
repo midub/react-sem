@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Error from "./error";
+import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,10 @@ export default function RootLayout({
         <div className="block m-6 space-x-6">
           <Link href="/">Home</Link>
         </div>
-        {children}
+        <ErrorBoundary
+          children={children}
+          errorComponent={Error}
+        ></ErrorBoundary>
       </body>
     </html>
   );
