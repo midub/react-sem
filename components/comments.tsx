@@ -1,8 +1,8 @@
 import prisma from "@/utils/db";
 import SingleComment from "./comment";
-import { useState } from "react";
-import Modal from "./modal";
-import NewCommentForm from "./new-comment-form";
+import { Suspense, lazy } from "react";
+
+const NewCommentForm = lazy(() => import("@/components/new-comment-form"));
 
 type Props = {
   carId: number;
@@ -21,7 +21,9 @@ export default async function Comments({ carId }: Props) {
           <SingleComment comment={comment} key={comment.id} />
         ))}
       </ul>
-      <NewCommentForm carId={carId} />
+      <Suspense>
+        <NewCommentForm carId={carId} />
+      </Suspense>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import CarDetail from "@/components/car-detail";
-import Comments from "@/components/comments";
 import prisma, { CarWithDeps } from "@/utils/db";
+import { Suspense, lazy } from "react";
+
+const Comments = lazy(() => import("@/components/comments"));
 
 type Params = {
   id: number;
@@ -19,7 +21,9 @@ export default async function CarDetailPage({ params }: { params: Params }) {
     <div className="flex flex-col items-center">
       <div className="flex gap-6 p-6">
         <CarDetail car={car} />
-        <Comments carId={car.id} />
+        <Suspense fallback={<div>Loading comments...</div>}>
+          <Comments carId={car.id} />
+        </Suspense>
       </div>
     </div>
   );

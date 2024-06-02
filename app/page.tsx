@@ -1,7 +1,9 @@
 import prisma from "@/utils/db";
 import SearchForm from "@/components/search-form";
-import CarList from "@/components/car-list";
 import Link from "next/link";
+import { Suspense, lazy } from "react";
+
+const CarList = lazy(() => import("@/components/car-list"));
 
 const getCars = async (search: string | null) => {
   return search
@@ -39,7 +41,9 @@ export default async function Home({
           Add a car
         </Link>
       </div>
-      <CarList cars={cars} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CarList cars={cars} />
+      </Suspense>
     </main>
   );
 }
