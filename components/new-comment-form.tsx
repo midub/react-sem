@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { createComment } from "@/utils/actions";
 import Modal from "./modal";
+import BlockingLoader from "./blocking-loader";
 
 type Props = {
   carId: number;
@@ -10,6 +11,7 @@ type Props = {
 
 export default function NewCommentForm({ carId }: Props) {
   const [showModal, setShowModal] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   return (
     <div>
@@ -19,11 +21,14 @@ export default function NewCommentForm({ carId }: Props) {
       {showModal && (
         <Modal>
           <div>
+            {isPending ? <BlockingLoader /> : null}
             <h2 className="subtitle">New Comment</h2>
             <form
               action={async (formData) => {
-                await createComment(formData);
-                setShowModal(false);
+                startTransition(async () => {
+                  await createComment(formData);
+                  setShowModal(false);
+                });
               }}
               className="grid grid-cols-2 max-w-lg gap-x-2"
             >
