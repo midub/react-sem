@@ -38,7 +38,7 @@ export default function NewCommentForm({ carId }: Props) {
                 type="text"
                 name="name"
                 required={true}
-                id="nameInput"
+                id="name"
                 className="col-span-2 mb-2"
                 placeholder="Michael Scott"
               />
@@ -48,7 +48,7 @@ export default function NewCommentForm({ carId }: Props) {
                 type="text"
                 name="content"
                 required={true}
-                id="contentInput"
+                id="content"
                 className="col-span-2 mb-4"
                 placeholder="That's my car."
               />

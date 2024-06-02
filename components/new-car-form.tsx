@@ -19,7 +19,7 @@ export default function NewCarForm({ makes }: { makes: MakeWithModels[] }) {
         <select
           className="col-span-2"
           name="makeId"
-          id="makeIdInput"
+          id="makeId"
           required={true}
           value={makeId}
           onChange={(e) => setMakeId(+e.target.value)}
@@ -36,7 +36,7 @@ export default function NewCarForm({ makes }: { makes: MakeWithModels[] }) {
         <select
           className="col-span-2"
           name="modelId"
-          id="modelIdInput"
+          id="modelId"
           required={true}
         >
           <option value="">Select a model</option>
@@ -52,7 +52,7 @@ export default function NewCarForm({ makes }: { makes: MakeWithModels[] }) {
           className="col-span-2"
           type="number"
           name="year"
-          id="yearInput"
+          id="year"
           required={true}
         />
 
@@ -61,16 +61,12 @@ export default function NewCarForm({ makes }: { makes: MakeWithModels[] }) {
           className="col-span-2"
           type="number"
           name="price"
-          id="priceInput"
+          id="price"
           required={true}
         />
 
         <label htmlFor="description">Description</label>
-        <textarea
-          className="col-span-2"
-          name="description"
-          id="descriptionInput"
-        />
+        <textarea className="col-span-2" name="description" id="description" />
 
         <button className="btn btn-blue col-span-2 col-start-2" type="submit">
           Submit
